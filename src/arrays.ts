@@ -86,10 +86,10 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
     if (messages.length === 0) {
         return [];
     }
-    const exclaimedList = messages.filter(
+    const revisedList = messages.filter(
         (message: string) => !message.endsWith("?"),
     );
-    exclaimedList.map((message: string) => {
+    const exclaimedList = revisedList.map((message: string) => {
         if (message.endsWith("!")) {
             message = message.toUpperCase();
         }
