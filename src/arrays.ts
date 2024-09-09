@@ -115,6 +115,18 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
+    if (colors.length === 0) {
+        return true;
+    }
+    const validColor = colors.filter((color: string) => {
+        if (color === "red" || color === "blue" || color === "green") {
+            return color;
+        }
+    });
+    if (validColor.length === colors.length) {
+        // if all colors are valid then it should be the same length as original
+        return true;
+    }
     return false;
 }
 
