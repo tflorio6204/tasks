@@ -54,12 +54,27 @@ export function stringsToIntegers(numbers: string[]): number[] {
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
     if (amounts.length === 0) {
+        return [];
     }
     const prices: number[] = amounts.map((amount: string) => {
+        let parsedPrice: number;
         if (amount[0] === "$") {
             amount = amount.slice(1, amount.length);
+            if (isNaN(parseInt(amount))) {
+                amount = "0";
+                parsedPrice = parseInt(amount);
+            } else {
+                parsedPrice = parseInt(amount);
+            }
+        } else if (isNaN(parseInt(amount))) {
+            amount = "0";
+            parsedPrice = parseInt(amount);
+        } else {
+            parsedPrice = parseInt(amount);
         }
+        return parsedPrice;
     });
+    return prices;
 };
 
 /**
@@ -68,7 +83,19 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    if (messages.length === 0) {
+        return [];
+    }
+    const exclaimedList = messages.filter(
+        (message: string) => !message.endsWith("?"),
+    );
+    exclaimedList.map((message: string) => {
+        if (message.endsWith("!")) {
+            message = message.toUpperCase();
+        }
+        return message;
+    });
+    return exclaimedList;
 };
 
 /**
