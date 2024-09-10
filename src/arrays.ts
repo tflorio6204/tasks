@@ -168,5 +168,20 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    // Line #171 and Lines 173-179 were written by ChatGPT
+    let foundNegative = false; // (It helped debug my code because I didn't know how to sum without summing a whole array)
+    const index = values.findIndex((value: number) => value < 0);
+    const sumBeforeNegative = values.reduce((currentTotal, value) => {
+        if (foundNegative || value < 0) {
+            foundNegative = true;
+            return currentTotal;
+        }
+        return currentTotal + value;
+    }, 0);
+    if (index === -1) {
+        return [...values, sumBeforeNegative];
+    }
+    const newArray = [...values];
+    newArray.splice(index + 1, 0, sumBeforeNegative);
+    return newArray;
 }
