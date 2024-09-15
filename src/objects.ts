@@ -32,8 +32,11 @@ export function makeBlankQuestion(
  */
 export function isCorrect(question: Question, answer: string): boolean {
     answer = answer.trim().toLowerCase();
-    question.expected = question.expected.trim().toLowerCase();
-    if (answer === question.expected) {
+    const formattedQuestion = {
+        ...question,
+        expected: question.expected.trim().toLowerCase(),
+    };
+    if (answer === formattedQuestion.expected) {
         return true;
     }
     return false;
@@ -159,5 +162,12 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number },
 ): Question {
-    return contentQuestion;
+    const mergedQuestion = {
+        ...contentQuestion,
+        id: id,
+        name: name,
+        points,
+        published: false,
+    };
+    return mergedQuestion;
 }
