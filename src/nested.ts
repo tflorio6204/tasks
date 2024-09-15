@@ -56,7 +56,7 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * questions, as an array.
  */
 export function getNames(questions: Question[]): string[] {
-    return questions.map((question: Question) => question.name);
+    return questions.map((question: Question): string => question.name);
 }
 
 /***
@@ -96,7 +96,12 @@ id,name,options,points,published
  * Check the unit tests for more examples!
  */
 export function toCSV(questions: Question[]): string {
-    return "";
+    const header = "id,name,options,points,published";
+    const csvStrings = questions.map(
+        (question: Question): string =>
+            `${question.id},${question.name},${question.options.length},${question.points},${question.published}`,
+    );
+    return [header, ...csvStrings].join("\n"); //code was written by ChatGPT
 }
 
 /**
