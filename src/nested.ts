@@ -136,7 +136,15 @@ export function publishAll(questions: Question[]): Question[] {
  * are the same type. They can be any type, as long as they are all the SAME type.
  */
 export function sameType(questions: Question[]): boolean {
-    return false;
+    const typeArray = questions.map(
+        (question: Question): string => question.type,
+    );
+    for (let i = 0; i < typeArray.length; i++) {
+        if (typeArray[i] !== typeArray[i + 1] && i !== typeArray.length - 1) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /***
