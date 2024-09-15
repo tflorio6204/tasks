@@ -18,12 +18,11 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    return questions.filter(
+    const nonEmptyArray = questions.filter(
         (question: Question) =>
-            question.body !== "" &&
-            question.expected !== "" &&
-            question.options.length > 0,
+            !question.body && !question.expected && question.options.length > 0,
     );
+    return nonEmptyArray;
 }
 
 /***
@@ -75,7 +74,8 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    return 0;
+    const publishedQuestion = getPublishedQuestions(questions);
+    return sumPoints(publishedQuestion);
 }
 
 /***
