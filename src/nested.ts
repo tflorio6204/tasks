@@ -230,7 +230,26 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    return [];
+    const targetIndex: number = questions.findIndex(
+        (question: Question) => question.id === targetId,
+    );
+    const newQuestion = { ...questions[targetIndex], id: targetId };
+    if (targetOptionIndex === -1) {
+        const copiedOption = [...questions[targetIndex].options];
+        newQuestion.options = [...copiedOption, newOption];
+    } else {
+        const arrCopy = [
+            ...questions[targetIndex].options.splice(
+                targetOptionIndex,
+                1,
+                newOption,
+            ),
+        ];
+        newQuestion.options = [...arrCopy];
+    }
+    const newArray = [...questions];
+    newArray.splice(targetIndex, 1, newQuestion);
+    return newArray;
 }
 
 /***
