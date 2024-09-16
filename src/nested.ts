@@ -1,3 +1,4 @@
+import Q from "q";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
 import { makeBlankQuestion } from "./objects";
@@ -19,11 +20,11 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    const nonEmptyArray = questions.filter(
-        (question: Question) =>
-            !question.body && !question.expected && question.options.length > 0,
-    );
-    return nonEmptyArray;
+    // const nonEmptyArray = questions.filter(
+    //     (question: Question) =>
+    //         !question.body && !question.expected && question.options.length > 0,
+    // );
+    return questions;
 }
 
 /***
@@ -172,7 +173,17 @@ export function renameQuestionById(
     targetId: number,
     newName: string,
 ): Question[] {
-    return [];
+    const targetIndex: number = questions.findIndex(
+        (question: Question) => question.id === targetId,
+    );
+    const newQuestion: Question = {
+        ...questions[targetIndex],
+        id: targetId,
+        name: newName,
+    };
+    const newArray = [...questions];
+    newArray.splice(targetIndex, 1, newQuestion);
+    return newArray;
 }
 
 /***
@@ -187,7 +198,20 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType,
 ): Question[] {
-    return [];
+    const targetIndex: number = questions.findIndex(
+        (question: Question) => question.id === targetId,
+    );
+    const newQuestion: Question = {
+        ...questions[targetIndex],
+        id: targetId,
+        type: newQuestionType,
+    };
+    if (newQuestion.type !== "multiple_choice_question") {
+        newQuestion.options = [];
+    }
+    const newArray = [...questions];
+    newArray.splice(targetIndex, 1, newQuestion);
+    return newArray;
 }
 
 /**
