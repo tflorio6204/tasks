@@ -14,6 +14,13 @@ export function d6(): number {
 export function TwoDice(): React.JSX.Element {
     const [d1Value, setD1Value] = useState<number>(1);
     const [d2Value, setD2Value] = useState<number>(2);
+    let message: string = "";
+    if (d1Value === d2Value) {
+        if (d1Value === 1 || d2Value === 1) {
+            message = "Lose";
+        }
+        message = "Win";
+    }
     return (
         <div>
             <div>
@@ -38,6 +45,8 @@ export function TwoDice(): React.JSX.Element {
                 </Button>
                 <span data-testid="right-die">Dice: {d2Value}</span>
             </div>
+            <div> Get the same roll and avoid snake eyes to win! </div>
+            <div>{message}</div>
         </div>
     );
 }
