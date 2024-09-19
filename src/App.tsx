@@ -4,7 +4,7 @@ import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Counter } from "./components/Counter";
 import { RevealAnswer } from "./components/RevealAnswer";
-// import { StartAttempt } from "./components/StartAttempt";
+import { StartAttempt } from "./components/StartAttempt";
 import { ChangeType } from "./components/ChangeType";
 // import { CycleHoliday } from "./components/CycleHoliday";
 // import { TwoDice } from "./components/TwoDice";
@@ -22,7 +22,7 @@ function App(): React.JSX.Element {
                 <hr />
                 <RevealAnswer></RevealAnswer>
                 <hr />
-                {/* <StartAttempt></StartAttempt> */}
+                <StartAttempt></StartAttempt>
                 <hr />
                 {/* <TwoDice></TwoDice> */}
                 <hr />
