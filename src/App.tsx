@@ -5,7 +5,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { Counter } from "./components/Counter";
 import { RevealAnswer } from "./components/RevealAnswer";
 // import { StartAttempt } from "./components/StartAttempt";
-// import { ChangeType } from "./components/ChangeType";
+import { ChangeType } from "./components/ChangeType";
 // import { CycleHoliday } from "./components/CycleHoliday";
 // import { TwoDice } from "./components/TwoDice";
 
@@ -26,7 +26,7 @@ function App(): React.JSX.Element {
                 <hr />
                 {/* <TwoDice></TwoDice> */}
                 <hr />
-                {/* <ChangeType></ChangeType> */}
+                <ChangeType></ChangeType>
                 <hr />
                 {/* <CycleHoliday></CycleHoliday> */}
             </div>
