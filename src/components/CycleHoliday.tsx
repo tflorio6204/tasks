@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 export function CycleHoliday(): React.JSX.Element {
     type holiday = "🎄" | "🦃" | "🐇" | "🎃" | "🎆";
     const [myHoliday, setHoliday] = useState<{
-        alphaHoliday: holiday;
+        alphaHoliday: holiday; // code written by ChatGPT
         yearHoliday: holiday;
     }>({
         alphaHoliday: "🎄",
@@ -46,15 +46,17 @@ export function CycleHoliday(): React.JSX.Element {
                 <Button onClick={changeHolidaybyAlpha}>
                     Advance by Alphabet
                 </Button>{" "}
-                Holiday: {myHoliday.alphaHoliday}
+                <div>Holiday:</div>
             </div>
             <div>
                 <Button onClick={changeHolidaybyYear}>Advance by Year</Button>
-                Holiday: {myHoliday.yearHoliday}
+                <div>Holiday:</div>
             </div>
         </div>
     );
 }
 
+//{myHoliday.yearHoliday}
+//{myHoliday.alphaHoliday}
 // C, E, H, N, T
 // Decemeber, November, March/April, October, Janurary
