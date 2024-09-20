@@ -1,7 +1,5 @@
 import React from "react";
-import myImage from "./Assets/IMG_4268.png";
 import "./App.css";
-import { Button, Col, Container, Row } from "react-bootstrap";
 import { Counter } from "./components/Counter";
 import { RevealAnswer } from "./components/RevealAnswer";
 import { StartAttempt } from "./components/StartAttempt";
