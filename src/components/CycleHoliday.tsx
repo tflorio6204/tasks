@@ -3,13 +3,7 @@ import { Button } from "react-bootstrap";
 
 export function CycleHoliday(): React.JSX.Element {
     type holiday = "🎄" | "🦃" | "🐇" | "🎃" | "🎆";
-    const [myHoliday, setHoliday] = useState<{
-        alphaHoliday: holiday; // code written by ChatGPT
-        yearHoliday: holiday;
-    }>({
-        alphaHoliday: "🎄",
-        yearHoliday: "🎃",
-    });
+    const [myHoliday, setHoliday] = useState<holiday>("🎄");
     const ALPHABETICAL_TRANSITIONS: Record<holiday, holiday> = {
         "🎄": "🐇",
         "🐇": "🎃",
@@ -25,38 +19,32 @@ export function CycleHoliday(): React.JSX.Element {
         "🐇": "🎃",
     };
     function changeHolidaybyAlpha(): void {
-        const newHoliday = ALPHABETICAL_TRANSITIONS[myHoliday.alphaHoliday];
-        setHoliday((prev) => ({
-            //code written by ChatGPT
-            ...prev,
-            alphaHoliday: newHoliday,
-        }));
+        const newHoliday = ALPHABETICAL_TRANSITIONS[myHoliday];
+        setHoliday(newHoliday);
     }
     function changeHolidaybyYear(): void {
-        const newHoliday = TOY_TRANSITIONS[myHoliday.yearHoliday];
-        setHoliday((prev) => ({
-            //code written by ChatGPT
-            ...prev,
-            yearHoliday: newHoliday,
-        }));
+        const newHoliday = TOY_TRANSITIONS[myHoliday];
+        setHoliday(newHoliday);
     }
     return (
         <div>
+            Holiday: {myHoliday}
             <div>
                 <Button onClick={changeHolidaybyAlpha}>
                     Advance by Alphabet
-                </Button>{" "}
-                <div>Holiday:</div>
+                </Button>
             </div>
             <div>
-                <Button onClick={changeHolidaybyYear}>Advance by Year</Button>
-                <div>Holiday:</div>
+                <div>
+                    <Button onClick={changeHolidaybyYear}>
+                        Advance by Year
+                    </Button>
+                </div>
             </div>
+            <div />
         </div>
     );
 }
 
-//{myHoliday.yearHoliday}
-//{myHoliday.alphaHoliday}
 // C, E, H, N, T
 // Decemeber, November, March/April, October, Janurary

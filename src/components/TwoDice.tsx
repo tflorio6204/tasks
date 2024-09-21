@@ -18,8 +18,9 @@ export function TwoDice(): React.JSX.Element {
     if (d1Value === d2Value) {
         if (d1Value === 1 || d2Value === 1) {
             message = "Lose";
+        } else {
+            message = "Win";
         }
-        message = "Win";
     }
     return (
         <div>
@@ -45,8 +46,7 @@ export function TwoDice(): React.JSX.Element {
                 </Button>
                 <span data-testid="right-die">Dice: {d2Value}</span>
             </div>
-            <div> Get the same roll and avoid snake eyes to win! </div>
-            <div>{message}</div>
+            <div> {message} </div>
         </div>
     );
 }
