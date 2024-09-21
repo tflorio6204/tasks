@@ -6,7 +6,7 @@ export function ChangeType(): React.JSX.Element {
     const [question, setQuestion] = useState<QuestionType>(
         "short_answer_question",
     );
-    function ChangeType(): void {
+    function ToggleType(): void {
         setQuestion(
             question === "short_answer_question" ?
                 "multiple_choice_question"
@@ -15,7 +15,7 @@ export function ChangeType(): React.JSX.Element {
     }
     return (
         <div>
-            <Button onClick={ChangeType}>Change Type</Button>
+            <Button onClick={ToggleType}>Change Type</Button>
             {question === "short_answer_question" ?
                 <div> Short Answer</div>
             :   <div> Multiple Choice </div>}

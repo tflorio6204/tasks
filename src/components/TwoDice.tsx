@@ -28,6 +28,7 @@ export function TwoDice(): React.JSX.Element {
                 <Button
                     onClick={() => {
                         setD1Value(d6());
+                        return;
                     }}
                 >
                     {" "}
@@ -39,6 +40,7 @@ export function TwoDice(): React.JSX.Element {
                 <Button
                     onClick={() => {
                         setD2Value(d6());
+                        return;
                     }}
                 >
                     {" "}
