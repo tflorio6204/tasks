@@ -10,6 +10,7 @@ export function StartAttempt(): React.JSX.Element {
                 onClick={() => {
                     setProgress(true);
                     setAttempt(attemptCounter - 1);
+                    return;
                 }}
                 disabled={progress || attemptCounter <= 0}
             >
@@ -18,6 +19,7 @@ export function StartAttempt(): React.JSX.Element {
             <Button
                 onClick={() => {
                     setProgress(false);
+                    return;
                 }}
                 disabled={!progress}
             >
@@ -26,6 +28,7 @@ export function StartAttempt(): React.JSX.Element {
             <Button
                 onClick={() => {
                     setAttempt(attemptCounter + 1);
+                    return;
                 }}
                 disabled={progress}
             >

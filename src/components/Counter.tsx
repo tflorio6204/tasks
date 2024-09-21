@@ -8,6 +8,7 @@ export function Counter(): React.JSX.Element {
             <Button
                 onClick={() => {
                     setValue(1 + value);
+                    return;
                 }}
             >
                 Add One
