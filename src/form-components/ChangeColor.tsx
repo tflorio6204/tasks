@@ -3,16 +3,16 @@ import { Form } from "react-bootstrap";
 
 export function ChangeColor(): React.JSX.Element {
     const colorList = [
-        "Yellow",
-        "Red",
-        "Blue",
-        "Green",
-        "Pink",
-        "Black",
-        "Orange",
-        "White",
+        "yellow",
+        "red",
+        "blue",
+        "green",
+        "pink",
+        "gray",
+        "orange",
+        "white",
     ];
-    const [color, setColor] = useState<string>(colorList[0]);
+    const [color, setColor] = useState<string>("yellow");
     const updateColor = (event: React.ChangeEvent<HTMLInputElement>) => {
         setColor(event.target.value);
     };
@@ -24,11 +24,27 @@ export function ChangeColor(): React.JSX.Element {
                     inline
                     type="radio"
                     name="color"
+                    value={chosenColor}
+                    style={{ backgroundColor: chosenColor }}
                     onChange={updateColor}
-                    label={chosenColor}
+                    label={
+                        <span style={{ fontWeight: "bold" }}>
+                            {chosenColor}
+                        </span>
+                    }
                     key={chosenColor}
                 />
             ))}
+            <div>
+                Current Color:
+                <span
+                    data-testid="colored-box"
+                    style={{ backgroundColor: color }}
+                >
+                    {" "}
+                    {color}
+                </span>
+            </div>
         </div>
     );
 }
